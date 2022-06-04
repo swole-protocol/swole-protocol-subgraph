@@ -1,0 +1,35 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: SwoleProtocol
+    network: mumbai
+    source:
+      address: "0x6d7Ea71eECc524E5D03cE7d6B184113544dED1AC"
+      abi: SwoleProtocol
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - ApprovalForAll
+        - OwnershipTransferred
+        - Transfer
+        - WorkoutMinted
+      abis:
+        - name: SwoleProtocol
+          file: ./abis/SwoleProtocol.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+        - event: WorkoutMinted(uint256,string,uint256)
+          handler: handleWorkoutMinted
+      file: ./src/swole-protocol.ts
