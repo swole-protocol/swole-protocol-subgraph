@@ -1,6 +1,8 @@
-type ExampleEntity @entity {
+type Workout @entity {
   id: ID!
-  count: BigInt!
   owner: Bytes! # address
-  approved: Bytes! # address
+#  approval: Bytes! # address
+  identifier: BigInt!
+  uri: String
+  ipfsJson: String
 }
