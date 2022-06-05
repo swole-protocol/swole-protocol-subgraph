@@ -5,12 +5,12 @@ features:
   - ipfsOnEthereumContracts
 dataSources:
   - kind: ethereum
-    network: mumbai
+    network: matic
     name: SwoleProtocol
     source:
       address: "0x6d7Ea71eECc524E5D03cE7d6B184113544dED1AC"
       abi: SwoleProtocol
-      startBlock: 26595128
+      startBlock: 29171129
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5

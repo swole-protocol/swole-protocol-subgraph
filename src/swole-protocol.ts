@@ -17,9 +17,11 @@ export function handleTransfer(event: Transfer): void {
   let id = changetype<Bytes>(event.params.tokenId)
   let workout = Workout.load(id.toHexString())
   if(workout != null) {
-    let newAddr = event.transaction.from
-    workout.owner = newAddr
-    workout.save()
+    let newAddr = event.params.to
+    if(newAddr) {
+      workout.owner = newAddr
+      workout.save()
+    }
   }
 }
 
